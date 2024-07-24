@@ -27,6 +27,19 @@ const all = document.querySelectorAll("header h2"); //all elements matching this
 all.forEach( elm => elm.style.color = "orange" ); //querySelectorAll returns a nodelist (we can use forEach)
 
 
+// 
+// 
+// Practice: selecting elements from the DOM
+// 
+// @LT: before doing the exercise, make a quick demo on how to change the style (e.g., elm.style.background = "orange")
+// 
+// - Instructions: https://stackblitz.com/edit/web-platform-ydtmzw?file=script.js
+// - Time: 10-15min.
+// - Solution: https://stackblitz.com/edit/web-platform-doucbe?file=script.js
+// 
+// 
+
+
 //
 // context: document vs. element
 //
