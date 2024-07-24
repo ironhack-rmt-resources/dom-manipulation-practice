@@ -156,23 +156,47 @@ Examples of events:
 - mouse events (ex. click, mouseover...)
 - keyboard events (ex. keydown, keypress, keyup)
 
-elm.addEventListener("nameOfTheEvent", () => {})
+
+addEventListener(type, code)
 
 */
 
-const btn = document.getElementById("button-1");
 
-btn.addEventListener("click", (e) => {
-    console.log("user has clicked on a button");   
-
-    //append paragraph
-    const newP =  document.createElement("p");
-    newP.innerText = "this p has been created dynamically";
-    parentElm.appendChild(newP);
-
+const btnOne = document.getElementById("button-1");
+btnOne.addEventListener("click", () => {
+    console.log("hello world")
 })
 
 
+//
+// Append a paragraph every time the user clicks on a button
+//
+
+const btnThree = document.getElementById("add-paragraph");
+btnThree.addEventListener("click", () => {
+
+    // step1: create the element:
+    const newP = document.createElement("p");
+
+    // step2: add content or modify (ex. innerHTML...)
+    newP.innerText = "This paragraph was created dynamically.";
+
+    //step3: append to the dom: `parentElm.appendChild()`
+    const container = document.getElementById("box-3");
+    container.appendChild(newP);
+
+});
+
+
+//
+// Practice & Research: detect keyboard events
+// ...
+// ...
+
+
+//
+// Detect spacebar + "event" object
+//
 document.addEventListener('keydown', (e) => {
     if (e.code === "Space") {
         console.log("user pressed spacebar")
@@ -180,6 +204,7 @@ document.addEventListener('keydown', (e) => {
         console.log("user pressed other key....")
     }
 });
+
 
 
 /*************************************/
@@ -196,64 +221,13 @@ allBtn.forEach( (elm) => {
 });
 
 
-/******************/
-/* Event Bubbling */
-/******************/
+
 
 /*
 
-when an event is fired, it will also "bubble up" and fire on all it's ancestors.
+- (skip) Event Bubbling
+- (skip) Detect Events on elements created dynamically
+- (skip) inputs
 
 */
 
-const box2 = document.getElementById("box-2");
-
-box2.addEventListener("click", () => {
-    // console.log("a click event dired in BOX 2")
-})
-
-
-document.addEventListener("click", () => {
-    // console.log("a click event dired in DOCUMENT")
-})
-
-
-/*************************************************/
-/* Detect Events on elements created dynamically */
-/*************************************************/
-
-const btnAdd = document.getElementById("btn-add");
-
-// everytime we click on "the magic button", append a new .btn
-btnAdd.addEventListener("click", () => { 
-    // step1: create the element:
-    const newBtn = document.createElement("button");
-
-    // step2: add content or modify (ex. innerHTML...)
-    newBtn.className = "btn";
-    newBtn.innerText = "Button 3 (on the fly)"
-
-    //step3: append to the dom: `parentElm.appendChild()`
-    const box3Elm = document.getElementById("box-3");
-    box3Elm.appendChild(newBtn)
-});
-
-document.addEventListener("click", (e) => {
-    if(e.target.className === "btn") {
-        console.log("one of our AMAZING buttons was clicked")
-    } else {
-        console.log("we clicked somewhere else...")
-    }
-})
-
-
-/**********/ 
-/* Inputs */
-/**********/ 
-
-const imgElm = document.querySelector("#pikachu img")
-
-imgElm.addEventListener("click", () => {
-    const inputElm = document.getElementById("price");
-    console.log("current price....", inputElm.value)
-});
